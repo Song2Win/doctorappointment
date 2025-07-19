@@ -179,7 +179,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 9999;
             flex-direction: column;
             color: white;
             transition: opacity 0.3s ease;
@@ -328,6 +328,7 @@
                 userPicture.src = profile.pictureUrl;
                 const friendship = await liff.getFriendship();
                 if (!friendship.friendFlag) {
+                    toggleLoading(false); // 👈 Hide the spinner before the alert
                     Swal.fire({
                         icon: 'error',
                         title: 'ข้อผิดพลาด!',
