@@ -328,6 +328,7 @@
                 userPicture.src = profile.pictureUrl;
                 const friendship = await liff.getFriendship();
                 if (!friendship.friendFlag) {
+                    toggleLoading(false);
                     Swal.fire({
                         icon: 'error',
                         title: 'ข้อผิดพลาด!',
