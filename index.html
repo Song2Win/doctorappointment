@@ -319,18 +319,19 @@
 
         function toggleLoading(show) { loadingOverlay.style.display = show ? 'flex' : 'none'; }
 
-        async function initializeLiffAndGetData() {
+        async function initializeLiff() {
+            toggleLoading(true, 'กำลังเชื่อมต่อ...');
             try {
                 await liff.init({ liffId: LIFF_ID, withLoginOnExternalBrowser: true });
-                if (!liff.isLoggedIn()) { liff.login({ redirectUri: window.location.href }); return; }
-                const profile = await liff.getProfile();
-                currentUserLineId = profile.userId;
-                userPicture.src = profile.pictureUrl;
+                if (!liff.isLoggedIn()) {
+                    liff.login({ redirectUri: window.location.href });
+                    return;
+                }
                 const friendship = await liff.getFriendship();
                 if (!friendship.friendFlag) {
                     Swal.fire({
                         icon: 'error',
-                        title: 'ข้อผิดพลาด!',
+                        title: 'เดี๋ยวก่อน!',
                         text: 'คุณยังไม่ได้เป็นเพื่อนกับเรา',
                         confirmButtonText: 'เพิ่มเพื่อน',
                     }).then(() => {
@@ -338,10 +339,10 @@
                     });
                     return;
                 }
-                await fetchPatientData();
             } catch (error) {
-                console.error('Initialization failed:', error);
-                Swal.fire({ title: 'เกิดข้อผิดพลาด', text: 'ไม่สามารถเชื่อมต่อกับระบบได้', icon: 'error', confirmButtonColor: '#667eea' });
+                console.error('LIFF Init failed:', error);
+                Swal.fire({ title: 'ข้อผิดพลาด', text: 'ไม่สามารถเริ่มต้น LIFF ได้', icon: 'error', confirmButtonColor: '#667eea' });
+            } finally {
                 toggleLoading(false);
             }
         }
