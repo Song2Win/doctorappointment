@@ -250,7 +250,7 @@
                     </div>
                 </div>
                 <h1 id="patient-name" class="text-3xl font-bold text-gray-800 mb-2"></h1>
-                <p class="text-gray-600 mb-6 font-medium">แสดง QR Code นี้กับเจ้าหน้าที่</p>
+                <p class="text-gray-600 mb-6 font-medium">แสดง QR Code นี้กับแพทย์</p>
                 <div id="qr-code-container" class="qr-container mb-6 inline-block"></div>
                 <p id="patient-id"
                     class="text-sm text-gray-500 font-medium bg-gray-50 px-4 py-2 rounded-full inline-block"></p>
@@ -259,7 +259,7 @@
                     class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>ดูประวัติสุขภาพของฉัน</button>
+                </svg>ดูประวัติสุขภาพ</button>
         </div>
     </div>
 
@@ -274,7 +274,7 @@
                                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-800 mb-2">ลงทะเบียนผู้ป่วยใหม่</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">ลงทะเบียนผู้รับบริการ</h2>
                     <p class="text-gray-600">กรุณากรอกข้อมูลพื้นฐานเพื่อเริ่มใช้งาน</p>
                 </div>
                 <form id="registration-form" class="space-y-6">
@@ -286,7 +286,6 @@
                             <option value="" disabled selected hidden></option>
                             <option value="ชาย">ชาย</option>
                             <option value="หญิง">หญิง</option>
-                            <option value="อื่นๆ">อื่นๆ</option>
                         </select><label for="reg-gender">เพศ</label></div>
                     <div class="floating-label"><input type="text" id="reg-disease" placeholder=" "><label
                             for="reg-disease">โรคประจำตัว (ถ้ามี)</label></div><button type="submit"
@@ -331,7 +330,7 @@
                 if (!friendship.friendFlag) {
                     Swal.fire({
                         icon: 'error',
-                        title: 'เดี๋ยวก่อน!',
+                        title: 'ข้อผิดพลาด!',
                         text: 'คุณยังไม่ได้เป็นเพื่อนกับเรา',
                         confirmButtonText: 'เพิ่มเพื่อน',
                     }).then(() => {
