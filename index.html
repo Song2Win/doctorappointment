@@ -475,7 +475,16 @@
             if (!button) return;
             const appointmentId = button.parentElement.dataset.appointmentId;
             const status = button.dataset.status;
-            const { value: isConfirmed } = await Swal.fire({ title: `คุณต้องการ "${status}"?`, text: "การดำเนินการนี้จะแจ้งให้เจ้าหน้าที่ทราบ", icon: 'warning', showCancelButton: true, confirmButtonColor: '#667eea', cancelButtonColor: '#d33', confirmButtonText: 'ยืนยัน', cancelButtonText: 'ยกเลิก' });
+            const { value: isConfirmed } = await Swal.fire({
+              title: `คุณต้องการ<br>"${status}"?`,
+              text: "การดำเนินการนี้จะแจ้งให้เจ้าหน้าที่ทราบ",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#667eea',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'ยืนยัน',
+              cancelButtonText: 'ยกเลิก'
+            });
             if (isConfirmed) {
                 toggleLoading(true);
                 const payload = { action: 'updateAppointmentStatus', payload: { appointmentId, status, lineUserId: currentUserLineId } };
