@@ -462,7 +462,7 @@
             const categorizedMeds = categorizeMedications(patientData.medications);
             const medicationHtml = Object.keys(categorizedMeds).map(category => {
                 if (categorizedMeds[category].length === 0) return '';
-                const medsList = categorizedMeds[category].map(med => `<div class="history-item border-l-purple-500"><div class="flex justify-between items-center"><div><p class="font-semibold text-gray-800">${med.MedName}</p><p class="text-sm text-gray-600">${med.Dosage}</p></div><div class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">เวลา: ${formatMedicationTime(med.Time)} น.</div></div></div>`).join('');
+                const medsList = categorizedMeds[category].map(med => `<div class="history-item border-l-purple-500"><div class="flex justify-between items-center"><div><p class="font-semibold text-gray-800">${med.MedName}</p><p class="text-sm text-gray-600">${med.Dosage}</p></div><div class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">เวลา: ${formatMedicationTime(med.Time)}</div></div></div>`).join('');
                 return `<div class="mb-4"><h5 class="font-semibold text-gray-700 mb-2">${category}</h5>${medsList}</div>`;
             }).join('');
 
