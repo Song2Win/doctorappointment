@@ -388,7 +388,7 @@
 
             appointmentsContent.innerHTML = appointments.length > 0 ? appointments.map(appt => `
                 <div class="history-item">
-                    <p class="font-semibold text-gray-800">${new Date(appt.AppointmentDate).toLocaleDateString('th-TH', { dateStyle: 'full' })}</p>
+                    <p class="font-semibold text-gray-800 mt-1">${new Date(appt.AppointmentDate).toLocaleDateString('th-TH', { dateStyle: 'full' })}</p>
                     <p class="text-sm text-gray-800 mt-1">บันทึกโดย: ${appt.DoctorName || 'N/A'}</p>
                     <p class="text-sm text-gray-800 mt-1">หมายเหตุ: ${appt.DoctorNotes || '-'}</p>
                 </div>
