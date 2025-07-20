@@ -467,7 +467,20 @@
                         }
                         break;
                 }
-                return `<div class="history-item ${statusClass}"><div class="flex justify-between items-start flex-wrap"><div><p class="font-semibold text-gray-800">${apptDate.toLocaleDateString('th-TH', { dateStyle: 'full' })}</p><p class="text-sm text-gray-600">พบแพทย์: ${appt.DoctorName || 'N/A'}</p>${appt.DoctorNotes && appt.DoctorNotes.trim() !== 'ไม่มี' ? `<p class="text-sm text-gray-700 bg-gray-50 p-2 rounded-md mt-2">หมายเหตุ: ${appt.DoctorNotes}</p>` : ''}</div><div class="mt-2 md:mt-0">${(appt.Status !== 'รอยืนยัน' || !isUpcoming) ? statusHtml : ''}</div></div>${(appt.Status === 'รอยืนยัน' && isUpcoming) ? statusHtml : ''}</div>`;
+                return `<div class="history-item ${statusClass}">
+  <div class="flex justify-between items-start flex-wrap">
+    <div>
+      <p class="font-semibold text-gray-800">${apptDate.toLocaleDateString('th-TH', { dateStyle: 'full' })}</p>
+      <p class="text-sm text-gray-600">พบแพทย์: ${appt.DoctorName || 'N/A'}</p>
+      ${appt.DoctorNotes && appt.DoctorNotes.trim() !== 'ไม่มี' ? `<p class="text-sm text-gray-700 bg-gray-50 p-2 rounded-md mt-2">หมายเหตุ: ${appt.DoctorNotes}</p>` : ''}
+    </div>
+    <div class="mt-2 md:mt-0">
+      ${(appt.Status !== 'รอยืนยัน' && appt.Status !== 'เลยกำหนด') || !isUpcoming ? statusHtml : ''}
+    </div>
+  </div>
+  ${(appt.Status === 'รอยืนยัน' && isUpcoming) || appt.Status === 'เลยกำหนด' ? statusHtml : ''}
+</div>`;
+
             }).join('') : '<div class="text-center py-8"><p class="text-gray-500 text-lg">ไม่มีประวัติการนัดหมาย</p></div>';
             
             const categorizedMeds = categorizeMedications(patientData.medications);
